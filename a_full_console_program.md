@@ -162,9 +162,61 @@ while(true)
 
 The meaning of a while statement is simple. It tells PHP to execute the nested statement(s) repeatedly, as long as the while expression evaluates to TRUE. 
 
+> infinite loop
+
+If the program is running into the infinite loop without exit logic, you can press Ctrl+c break out. Anyway, you should prevent this situation happens.
+
 Yeah, we have achieved another small goal, let's do a commit.
 
 ```git
 git add app.php
 git commit -m "Organize the overall control structure"
+```
+### Declare functions of the overall program
+
+It's a good habit to write documentation in programming.
+
+
+```php
+<?php
+...
+
+/**
+ * Display main menu for selecting one action to execute
+ * 
+ */
+function display_main_menu()
+{
+
+}
+
+...
+
+/**
+ * Listen and get keyboard input
+ * 
+ * @return string a single line string terimated with "\n"
+ */
+function get_input()
+{
+
+}
+
+...
+
+```
+
+> PHP standard
+
+For coding standard, check The PHP Standard Recommendation (PSR) which is a PHP specification published by the PHP Framework Interop Group.
+
+As a newbie, you can start following the [PSR-1](http://www.php-fig.org/psr/psr-1/) which is for Basic Coding Standard.
+
+For documentation standard, check [PHPDOC](https://www.phpdoc.org/)
+
+Let's finish this small step.
+
+```git
+git add app.php
+git commit -m "Declare functions of the overall program"
 ```
