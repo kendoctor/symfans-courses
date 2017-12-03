@@ -220,3 +220,120 @@ Let's finish this small step.
 git add app.php
 git commit -m "Declare functions of the overall program"
 ```
+
+### Impelment displaying menu and exiting the program
+
+Functions are still blank, we need write implementation for these functions.
+
+```php
+...
+
+/**
+ * Display main menn for selecting one action to execute
+ * 
+ */
+function display_main_menu()
+{
+    //define an array for holding action descriptions
+    $actions = [
+        "Add or update a vocabulary",
+        "List vocabularies",
+        "Find the vocabulary by headword",
+        "Remove the vocabulary by headword",
+        "Quit the program"
+    ];
+
+    echo "This is my own dictionary\n";
+
+    echo "Enter the indicator in [?] to execute the action\n\n";
+
+    //iterate $actions to display the action description
+    for($i=0; $i<count($actions); $i++)
+    {
+        echo sprintf("[%s]%s\n", $i+1, $actions[$i]);
+    }
+
+    echo "\n";
+}
+
+...
+
+/**
+ * Exit the program
+ */
+function quit()
+{
+
+    echo "Thanks to use my dictionary. Good bye.\n";
+
+    //exit the program
+    exit(0);
+
+
+}
+
+/**
+ * Alert when enter the wrong action indictor
+ *
+ */
+function alert()
+{
+
+    //strtoupper will convert characters in the string to uppercase
+    //vice versa, use strtolower to get lowercase
+    echo strtoupper("Please enter the right number for the action you want\n\n");
+
+
+}
+
+/**
+ * Listen and get keyboard input
+ *
+ * @return string a single line string terimated with "\n"
+ */
+function get_input()
+{
+
+    //open the stream for listening keyboard input
+    $handle = fopen("php://stdin", "r");
+    //wait and get the input when enter the return
+    $input = fgets($handle);
+    //close the stream
+    fclose($handle);
+
+
+    return $input;
+
+
+}
+
+...
+
+```
+
+> array data type
+
+An array in PHP is actually an ordered map. A map is a type that associates values to keys.
+
+Create an array using [] or array().
+
+```
+$fruits = array("apple", "banana", "orange");
+```
+
+Get the number of elements in an array using `count` function
+
+Access the element in an array using index or associated key, for example $fruits[0]. Default, index is start from 0.
+
+> [sprintf](http://php.net/manual/en/function.sprintf.php) function
+
+Get a formatted string. %s means a string placeholder for the arguments which are starting form second position.
+
+> build-in functions
+
+If we wish the program can do more, we need learn more functions which PHP already prepares for you.
+
+```git
+git add app.php
+git commit -m "Display main menu, quit the program and invalid operation alert done"
+```
